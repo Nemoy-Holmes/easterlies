@@ -15,7 +15,15 @@
     <%= form.label :title %>
     <%= form.text_field :title, id: :product_title %>
   </div>
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.text_field :date, id: :product_date%>
+  </div>
 
+<div class="field">
+  <%= form.label :description %>
+  <%= form.text_area :description, id: :product_description%>
+</div>
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content, id: :product_content %>

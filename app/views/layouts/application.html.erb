@@ -1,75 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Digiworld</title>
+    <title>roadrunner</title>
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
   </head>
 
   <body>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
+    <div  class="container navigation">
+      <nav class="navbar navbar-expand-lg  bg-dark justify-content-between">
+  <h4 class="nav-item" href="#"><%= link_to('roadrunner', products_path)%></h4>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">DigiWorld</a>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active"><h4 class="nav-link"><%= link_to('home', products_path)%>
+         <span class="sr-only">(current)</span></h4>
+      </li>
+            <li class="nav-item"><h4 class="nav-link">
+                 <%= link_to('about',simple_pages_about_path) %></h4>
+      </li>
+      <li class="nav-item"><h4 class="nav-link">
+        <%= link_to('contact', simple_pages_contact_path)%></h4>
+      </li>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">contact <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">about us</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Pc/Laptops</a></li>
-            <li><a href="#">Tablet/Phones</a></li>
-            <li><a href="#">Business solutions</a></li>
-            <li><a href="#">Software solutions</a></li>
-            <li><a href="#">Custom Request</a></li>
-
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Notifications</a></li>
-            <li><a href="#">History</a></li>
-            <li><a href="#">Profile</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">SignIn/SignUp</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
 </nav>
+    </div>
     <%= yield %>
     <footer>
-    	&copy; 2018 DigiWorld
+    	&copy; roadrunner
     </footer>
   </body>
 </html>
