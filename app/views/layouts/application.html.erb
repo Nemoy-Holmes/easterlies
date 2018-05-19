@@ -17,34 +17,49 @@
   </head>
 
   <body>
-    <div  class="container navigation">
-      <nav class="navbar navbar-expand-lg  bg-dark justify-content-between">
-  <h4 class="nav-item" href="#"><%= link_to('roadrunner', products_path)%></h4>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div  class="container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+              <h4 class="nav-item"><%= link_to('roadrunner',simple_pages_index_path)%></h4>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active"><h4 class="nav-link"><%= link_to('home', products_path)%>
-         <span class="sr-only">(current)</span></h4>
-      </li>
-            <li class="nav-item"><h4 class="nav-link">
-                 <%= link_to('about',simple_pages_about_path) %></h4>
-      </li>
-      <li class="nav-item"><h4 class="nav-link">
-        <%= link_to('contact', simple_pages_contact_path)%></h4>
-      </li>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active"><h4 class="nav-link">
+                    <span class="sr-only">(current)</span></h4>
+                  </li>
+                        <li class="nav-item"><h4 class="nav-link">
+                            <%= link_to('about',simple_pages_about_path) %></h4>
+                  </li>
+                  <li class="nav-item"><h4 class="nav-link">
+                    <%= link_to('contact', simple_pages_contact_path)%></h4>
+                  </li>
 
-    </ul>
-    <%= form_with(url: products_path, method: 'get', local: true) do |form|%>
-        <div class="form-inline my-2 my-lg-0">
-            <%= form.text_field :q, id: 'q', value: params[:q], class: "form-control mr-sm-2", type: "search", placeholder:"search"%>
-            <%= form.submit 'Search', class: "btn btn-outline-success my-2 my-sm-0", type: "submit"%>
-        </div>
-    <%end%>
-
-</nav>
+                </ul>
+                <%= form_with(url: products_path, method: 'get', local: true) do |form|%>
+                    <div class="form-inline my-2 my-lg-0">
+                        <%= form.text_field :q, id: 'q', value: params[:q], class: "form-control mr-sm-2", type: "search", placeholder:"search"%>
+                        <%= form.submit 'Search', class: "btn btn-outline-success my-2 my-sm-0", type: "submit"%>
+                    </div>
+                    
+                <%end%>
+                <ul class= "nav pull-right">
+                <li>
+                <% if user_signed_in? %>
+                <%= link_to("logout", destroy_user_session_path, method: :delete)%>
+                <% else%>
+                <%= link_to("login", new_user_session_path) %>
+                <%end%>
+                </li>
+                </ul>
+        </nav>
+        <%if notice%>
+        <p id= "notice" class="alert alert-info"><%= notice %></p>
+        <%end%>
+        <% if alert%>
+        <p id="notice" class= "alert alert-info"><%= notice%></p>
+        <%end%>
     </div>
     <%= yield %>
     <footer>
