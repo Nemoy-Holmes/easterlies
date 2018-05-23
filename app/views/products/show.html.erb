@@ -1,7 +1,7 @@
 <div class="container">    
     <p id="notice"><%= notice %></p>
         <div class= "row">
-          <%= image_tag(@product.image_name, class: "img-responsive img-width")%>
+          <%= image_tag(@product.image, class: "img-responsive img-width")%>
           <div class= "col-sm-10 col-md-5">
             <p>
               <strong>Title:</strong>
@@ -13,10 +13,9 @@
               <%= @product.content %>
             </p>
 
-            <p>
-              <strong>Image name:</strong>
-              <%= @product.image_name %>
-            </p>
+            <%= render 'new_comment'%>
+            <%= render 'comments'%>
+            <%= will_paginate @comments%>
 
             <%= link_to 'Edit', edit_product_path(@product) %> |
             <%= link_to 'Back', products_path %>
