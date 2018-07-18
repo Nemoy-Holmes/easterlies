@@ -1,9 +1,16 @@
 class DropProducts < ActiveRecord::Migration[5.1]
-  def change
-    change_table :comments do |t|
-      remove_foreign_key :comments, name: "index_comments_on_post_id"
-      remove_foreign_key :comments, name: "index_comments_on_product_id"
-      remove_foreign_key :comments, name: "index_comments_on_user_id"
+  def up
+    drop_table :comments do |t|
+      t.integer "user_id"
+      t.text "body"
+      t.integer "product_id"
+      t.datetime "created_at", null: false
+      t.datetime "updated_at", null: false
+      t.integer "post_id"
+      t.index ["post_id"]
+      t.index ["product_id"]
+      t.index ["user_id"],
     end
+
   end
 end
