@@ -1,14 +1,9 @@
 class DropProducts < ActiveRecord::Migration[5.1]
-  def up
-    drop_table :products do |t|
-      t.string "title"
-      t.text "content"
-      t.string "image"
-      t.datetime "created_at", null: false
-      t.datetime "updated_at", null: false
-      t.date "dateOfPublish"
-      t.string "description"
+  def change
+    change_table : comments do |t|
+      remove_foreign_key :comments, name: "index_comments_on_post_id"
+      remove_foreign_key :comments, name: "index_comments_on_product_id"
+      remove_foreign_key :comments, name: "index_comments_on_user_id"
     end
   end
-
 end
