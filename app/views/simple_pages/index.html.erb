@@ -25,7 +25,7 @@
 				<div class="carousel-inner" role="listbox">
 					<% @posts.each do |post|%>
 					<div class= "carousel-item <%= "active" if post === @posts.first%>">
-						<%= image_tag(post.image, class: "img-responsive, img-width") %>
+						<%= image_tag(post.image_name, class: "img-responsive, img-width") %>
 						<div class="carousel-caption">
 							<h3 class="carousel-text"><%= post.title %></h3>
 						</div>
