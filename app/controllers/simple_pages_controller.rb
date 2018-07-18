@@ -1,5 +1,5 @@
 class SimplePagesController < ApplicationController
   def index
-  	@products = Product.limit(3)
+  	@posts = Post.limit(3)
   end
 end

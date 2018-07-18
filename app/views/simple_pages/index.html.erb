@@ -23,11 +23,11 @@
 				<!-- wrapper for slides -->
 
 				<div class="carousel-inner" role="listbox">
-					<% @products.each do |product|%>
-					<div class= "carousel-item <%= "active" if product === @products.first%>">
-						<%= image_tag(product.image, class: "img-responsive, img-width") %>
+					<% @posts.each do |post|%>
+					<div class= "carousel-item <%= "active" if post === @posts.first%>">
+						<%= image_tag(post.image, class: "img-responsive, img-width") %>
 						<div class="carousel-caption">
-							<h3 class="carousel-text"><%= product.title %></h3>
+							<h3 class="carousel-text"><%= post.title %></h3>
 						</div>
 					</div>
 					<% end %>

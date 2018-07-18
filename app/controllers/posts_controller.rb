@@ -1,15 +1,32 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit]
+  load_and_authorize_resource
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_url, alert: exception.message
+  end
+
+  respond_to :json, :html
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if params[:q]
+      search_term = params[:q]
+      @posts = Post.search(search_term)
+      #return our filtered list here
+    else
+      @posts = Post.all
+    end
+    
+    @posts = @posts.paginate(:page => params[:page], :per_page =>5)
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @reviews = @post.reviews.order("created_at DESC")
+    @reviews = Review.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /posts/new
@@ -69,6 +86,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :introduction, :content, :author, :publishDate)
+      params.require(:post).permit(:title, :description, :content, :author, :image_name, :publishDate)
     end
 end

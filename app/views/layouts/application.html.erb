@@ -36,11 +36,11 @@
                     <%= link_to('contact', simple_pages_contact_path)%></h4>
                   </li>
                   <li class="0nav-item"><h4 class="nav-link">
-                    <%= link_to('articles', products_path)%></h4>
+                    <%= link_to('articles', posts_path)%></h4>
                   </li>
 
                 </ul>
-                <%= form_with(url: products_path, method: 'get', local: true) do |form|%>
+                <%= form_with(url: posts_path, method: 'get', local: true) do |form|%>
                     <div class="form-inline my-2 my-lg-0">
                         <%= form.text_field :q, id: 'q', value: params[:q], class: "form-control mr-sm-2", type: "search", placeholder:"search"%>
                         <%= form.submit 'Search', class: "btn btn-outline-success my-2 my-sm-0", type: "submit"%>

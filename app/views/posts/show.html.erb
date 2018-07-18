@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container">    
+        <div class= "row">
+          <%= image_tag(@post.image_name, class: "img-responsive img-width")%>
+          <div class= "col-sm-10 col-md-5">
+            <p>
+              <strong>Title:</strong>
+              <%= @post.title %>
+            </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+            <p>
+              <small>Author:</small>
+              <%= @post.author %>
+            </p>
 
-<p>
-  <strong>Introduction:</strong>
-  <%= @post.introduction %>
-</p>
+            <p>
+              <strong>Publishdate:</strong>
+              <%= @post.publishDate %>
+            </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+            <p>
+              <strong>Content:</strong>
+              <%= @post.content %>
+            </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
+            <%= render 'new_review'%>
+            <%= render 'reviews'%>
+            <%= will_paginate @reviews%>
 
-<p>
-  <strong>Publishdate:</strong>
-  <%= @post.publishDate %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+            <%= link_to 'Edit', edit_post_path(@post) %> |
+            <%= link_to 'Back', posts_path %>
+          </div>
+        </div>
+</div>        

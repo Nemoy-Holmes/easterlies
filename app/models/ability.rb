@@ -9,7 +9,7 @@ class Ability
        else
          can :read, :all
          can :manage, :User, id: user.id
-         cannot :manage, :Product
+         cannot :manage, :Post
          end
     end
  end

@@ -1,0 +1,10 @@
+<% @reviews.each do |review| %>
+  <div class="col-xs-12 col-md-8 col-md-offset-1">
+    <hr>
+      <%= review.user.first_name %> <small><em><%= "#{time_ago_in_words(review.created_at)} ago" %></em></small><br>
+      <%= "Review: #{review.body}" %><p></p>
+      <% if signed_in? && current_user.admin? %>
+        <%= link_to ('<span class="glyphicon glyphicon-remove"></span>').html_safe, post_review_path(review.post, review), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end %>
+  </div>
+<% end %>
